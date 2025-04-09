@@ -1,44 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: albcamac <albcamac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 22:46:49 by albcamac          #+#    #+#             */
-/*   Updated: 2025/04/09 13:45:00 by albcamac         ###   ########.fr       */
+/*   Created: 2025/04/09 13:11:11 by albcamac          #+#    #+#             */
+/*   Updated: 2025/04/09 13:15:59 by albcamac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	ft_putstr_fd(char *s, int fd)
 {
-	size_t			i;
-	unsigned char	*d;
-	unsigned char	*s;
-
-	d = (unsigned char *)dest;
-	s = (unsigned char *)src;
-	if (!dest && !src)
-		return (0);
-	i = 0;
-	while (i < n)
+	if (!s)
+		return ;
+	while (*s)
 	{
-		d[i] = s[i];
-		i++;
+		write (fd, s, 1);
+		s++;
 	}
-	return (dest);
 }
 /*
-#include <stdio.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include "libft.h"
 
-int	main()
+int	main(void)
 {
-	char origen[] = "hola pepe";
-	char destino[20];
+	int	fd;
 
-	ft_memcpy(destino, origen,ft_strlen(origen) + 1);
-	printf("%s",destino);
+	fd = open("mensaje.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (fd == -1)
+	{
+		ft_putstr_fd("Error abriendo el archivo\n", 2);
+		return (1);
+	}
+
+	ft_putstr_fd("Hola desde Libft!\n", fd);
+	close(fd);
+
+	return (0);
 }
 */

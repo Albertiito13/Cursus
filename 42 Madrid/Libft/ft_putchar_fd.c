@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: albcamac <albcamac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 17:29:43 by albcamac          #+#    #+#             */
-/*   Updated: 2025/04/09 13:42:07 by albcamac         ###   ########.fr       */
+/*   Created: 2025/04/09 13:04:10 by albcamac          #+#    #+#             */
+/*   Updated: 2025/04/09 13:06:15 by albcamac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_tolower(int c)
+#include "libft.h"
+
+void	ft_putchar_fd(char c, int fd)
 {
-	if (c >= 'A' && c <= 'Z')
-		c = c + 32;
-	return (c);
+	write(fd, &c, 1);
 }
 /*
-#include <stdio.h>
-int main()
+#include "libft.h"
+
+int	main(void)
 {
-	printf("%c", ft_tolower('F'));
+	ft_putchar_fd('A', 1); // imprime 'A' en la consola
+	ft_putchar_fd('\n', 1);
+	ft_putchar_fd('E', 2); // imprime 'E' en stderr (útil para errores)
+
+	return (0);
 }
 */

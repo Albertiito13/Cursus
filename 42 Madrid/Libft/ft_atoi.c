@@ -6,11 +6,11 @@
 /*   By: albcamac <albcamac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:33:44 by albcamac          #+#    #+#             */
-/*   Updated: 2025/04/07 21:59:33 by albcamac         ###   ########.fr       */
+/*   Updated: 2025/04/09 13:40:22 by albcamac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(char *s)
+int	ft_atoi(const char *s)
 {
 	int	i;
 	int	r;

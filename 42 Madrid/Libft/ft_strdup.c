@@ -6,13 +6,13 @@
 /*   By: albcamac <albcamac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 20:44:59 by albcamac          #+#    #+#             */
-/*   Updated: 2025/04/08 20:57:03 by albcamac         ###   ########.fr       */
+/*   Updated: 2025/04/09 13:50:55 by albcamac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(char *s1)
+char	*ft_strdup(const char *s1)
 {
 	size_t	i;
 	size_t	len;

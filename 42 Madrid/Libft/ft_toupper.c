@@ -6,15 +6,15 @@
 /*   By: albcamac <albcamac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:33:28 by albcamac          #+#    #+#             */
-/*   Updated: 2025/04/07 17:05:17 by albcamac         ###   ########.fr       */
+/*   Updated: 2025/04/09 13:42:28 by albcamac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_toupper(int s)
+int	ft_toupper(int c)
 {
-	if (s >= 'a' && s <= 'z')
-		s = s - 32;
-	return (s);
+	if (c >= 'a' && c <= 'z')
+		c = c - 32;
+	return (c);
 }
 /*
 #include <stdio.h>
