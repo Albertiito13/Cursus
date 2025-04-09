@@ -1,51 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: albcamac <albcamac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 23:15:01 by albcamac          #+#    #+#             */
-/*   Updated: 2025/04/07 23:43:14 by albcamac         ###   ########.fr       */
+/*   Created: 2025/04/07 17:33:44 by albcamac          #+#    #+#             */
+/*   Updated: 2025/04/07 21:59:33 by albcamac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	*ft_memmove(void *dest, void *src, size_t n)
+int	ft_atoi(char *s)
 {
-	size_t			i;
-	unsigned char	*d;
-	unsigned char	*s;
+	int	i;
+	int	r;
+	int	sign;
 
-	d = (unsigned char *)dest;
-	s = (unsigned char *)src;
-	if (!dest && !src)
-		return (0);
-	if (d > s && d < s + n)
+	i = 0;
+	sign = 1;
+	r = 0;
+	while ((s[i] >= 9 && s[i] <= 13) || s[i] == ' ')
+		i++;
+	if (s[i] == '-' || s[i] == '+')
 	{
-		i = n;
-		while (i--)
-			d[i] = s[i];
+		if (s[i] == '-')
+			sign = -1;
+		i++;
 	}
-	else
+	while (s[i] >= '0' && s[i] <= '9')
 	{
-		i = 0;
-		while (i < n)
-		{
-			d[i] = s[i];
-			i++;
-		}
+		r = r * 10 + (s[i] - '0');
+		i++;
 	}
-	return (dest);
+	return (r * sign);
 }
 /*
 #include <stdio.h>
-int	main()
+#include <stdlib.h>
+int	main(int ac, char **av)
 {
-	char str[20] = "hola pedro";
-
-	ft_memmove(str + 6, str, 8);
-	printf("%s", str);
+	if (ac > 1)
+	{
+		printf("%d \n", atoi(av[1]));
+		printf("%d", ft_atoi(av[1]));
+	}
 }
 */

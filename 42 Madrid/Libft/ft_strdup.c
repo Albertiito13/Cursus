@@ -1,48 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: albcamac <albcamac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/08 16:51:34 by albcamac          #+#    #+#             */
-/*   Updated: 2025/04/08 17:00:36 by albcamac         ###   ########.fr       */
+/*   Created: 2025/04/08 20:44:59 by albcamac          #+#    #+#             */
+/*   Updated: 2025/04/08 20:57:03 by albcamac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, char *src, size_t size)
+char	*ft_strdup(char *s1)
 {
 	size_t	i;
+	size_t	len;
+	char	*cpy;
 
+	len = ft_strlen(s1);
+	cpy = (char *)malloc(sizeof(char) * (len - 1));
+	if (!cpy)
+		return (0);
 	i = 0;
-	if (size > 0)
+	while (s1[i])
 	{
-		while (src[i] && i < size -1)
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
-	}
-	i = 0;
-	while (src[i])
+		cpy[i] = s1[i];
 		i++;
-	return (i);
+	}
+	cpy[i] = '\0';
+	return (cpy);
 }
 /*
 #include <stdio.h>
-#include <string.h>
-
-int main()
+int main(void)
 {
-    char dest[10];
-    size_t len = strlcpy(dest, "Hola mundo", sizeof(dest));
+	char *original = "Hola 42";
+	char *copia = ft_strdup(original);
 
-    printf("Destino: %s\n", dest);       // → "Hola mund"
-    printf("Longitud original: %zu\n", len); // → 10 (longitud de "Hola mundo")
-
-    return 0;
+	if (copia)
+	{
+		printf("Original: %s\n", original);
+		printf("Copia:    %s\n", copia);
+		free(copia);
+	}
+	return 0;
 }
 */

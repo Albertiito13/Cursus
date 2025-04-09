@@ -1,48 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: albcamac <albcamac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/08 16:51:34 by albcamac          #+#    #+#             */
-/*   Updated: 2025/04/08 17:00:36 by albcamac         ###   ########.fr       */
+/*   Created: 2025/04/08 17:15:11 by albcamac          #+#    #+#             */
+/*   Updated: 2025/04/08 17:25:19 by albcamac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, char *src, size_t size)
+void	*ft_calloc(size_t count, size_t size)
 {
-	size_t	i;
+	size_t			total;
+	unsigned char	*ptr;
+	size_t			i;
 
+	total = count * size;
+	ptr = (unsigned char *)malloc(total);
+	if (!ptr)
+		return (0);
 	i = 0;
-	if (size > 0)
-	{
-		while (src[i] && i < size -1)
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
-	}
-	i = 0;
-	while (src[i])
-		i++;
-	return (i);
+	while (i < total)
+		ptr[i++] = 0;
+	return ((void *)ptr);
 }
 /*
 #include <stdio.h>
-#include <string.h>
+
+void *ft_calloc(unsigned long count, unsigned long size);
 
 int main()
 {
-    char dest[10];
-    size_t len = strlcpy(dest, "Hola mundo", sizeof(dest));
+    int *nums = (int *)ft_calloc(10, sizeof(int));
+    if (!nums)
+        return 1;
 
-    printf("Destino: %s\n", dest);       // → "Hola mund"
-    printf("Longitud original: %zu\n", len); // → 10 (longitud de "Hola mundo")
+    for (int i = 0; i < 10; i++)
+        printf("%d ", nums[i]); // → 0 0 0 0 0
 
+    free(nums);
     return 0;
 }
 */

@@ -1,48 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: albcamac <albcamac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/08 16:51:34 by albcamac          #+#    #+#             */
-/*   Updated: 2025/04/08 17:00:36 by albcamac         ###   ########.fr       */
+/*   Created: 2025/04/07 23:59:55 by albcamac          #+#    #+#             */
+/*   Updated: 2025/04/08 00:11:52 by albcamac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, char *src, size_t size)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	i;
+	size_t	j;
 
+	if (!needle)
+		return ((char *)haystack);
 	i = 0;
-	if (size > 0)
+	while (haystack[i] && i < len)
 	{
-		while (src[i] && i < size -1)
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
-	}
-	i = 0;
-	while (src[i])
+		j = 0;
+		while (needle[j] && haystack[i + j] == needle[j] && (i + j) < len)
+			j++;
+		if (!needle[j])
+			return ((char *)(haystack + i));
 		i++;
-	return (i);
+	}
+	return (0);
 }
 /*
 #include <stdio.h>
-#include <string.h>
-
-int main()
+int main ()
 {
-    char dest[10];
-    size_t len = strlcpy(dest, "Hola mundo", sizeof(dest));
+	const char *txt = "hola mundo loco";
+	const char *b = "mundo";
 
-    printf("Destino: %s\n", dest);       // → "Hola mund"
-    printf("Longitud original: %zu\n", len); // → 10 (longitud de "Hola mundo")
-
-    return 0;
+	char *res = ft_strnstr(txt, b, 10);
+	printf("%s",res);
 }
 */

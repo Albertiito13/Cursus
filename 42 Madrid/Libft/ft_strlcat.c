@@ -1,65 +1,48 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: albcamac <albcamac@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/08 17:02:01 by albcamac          #+#    #+#             */
+/*   Updated: 2025/04/08 17:14:10 by albcamac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
-size_t  ft_strlcat(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcat(char *dst, char *src, size_t size)
 {
-    size_t  dlen;
-    size_t  slen;
-    size_t  i;
-    size_t  j;
+	size_t	i;
+	size_t	j;
+	size_t	dst_len;
 
-    dlen = 0;
-    while (dst[dlen] && dlen < dstsize)
-        dlen++;
-    slen = 0;
-    while (src[slen])
-        slen++;
-    if (dlen == dstsize)
-        return (dstsize + slen);
-    i = dlen;
-    j = 0;
-    while (src[j] && i < dstsize - 1)
-        dst[i++] = src[j++];
-    if (i < dstsize)
-        dst[i] = '\0';
-    return (dlen + slen);
+	i = 0;
+	j = 0;
+	while (i < size && dst[i])
+		i++;
+	dst_len = i;
+	while (src[j] && (i + 1) < size)
+		dst[i++] = src[j++];
+	if (dst_len < size)
+		dst[i] = '\0';
+	while (src[j])
+		j++;
+	return (dst_len + j);
 }
-
+/*
 #include <stdio.h>
-#include "libft.h"
+#include <string.h>
 
-int main(void)
+int main()
 {
-    char dest1[50] = "Hello";
-    char src1[] = " World";
-    size_t ret1;
+    char buffer[15] = "Hola";
+    size_t len = ft_strlcat(buffer, " mundo", 10);
 
-    // Caso 1: Buffer suficientemente grande
-    printf("Caso 1:\n");
-    printf("dest1 antes: \"%s\"\n", dest1);
-    ret1 = ft_strlcat(dest1, src1, sizeof(dest1));
-    printf("dest1 después: \"%s\"\n", dest1);
-    printf("Valor retornado (longitud total teórica): %zu\n\n", ret1);
-
-    // Caso 2: Buffer pequeño que provoca truncamiento
-    char dest2[10] = "Hi";
-    char src2[] = " there, friend!";
-    size_t ret2;
-    printf("Caso 2:\n");
-    printf("dest2 antes: \"%s\"\n", dest2);
-    ret2 = ft_strlcat(dest2, src2, sizeof(dest2));
-    printf("dest2 después: \"%s\"\n", dest2);
-    printf("Valor retornado (longitud total teórica): %zu\n\n", ret2);
-
-    // Caso 3: dstsize es menor o igual a la longitud inicial de dest
-    char dest3[15] = "Testing";
-    char src3[] = "12345";
-    size_t ret3;
-    printf("Caso 3:\n");
-    printf("dest3 antes: \"%s\"\n", dest3);
-    ret3 = ft_strlcat(dest3, src3, 4);  // dstsize menor que la longitud de "Testing"
-    printf("dest3 después (sin modificación esperada): \"%s\"\n", dest3);
-    printf("Valor retornado: %zu\n", ret3);
+    printf("Resultado: %s\n", buffer);   // → Hola mundo
+    printf("Tamaño total esperado: %zu\n", len); // → 10
 
     return 0;
 }
+*/
