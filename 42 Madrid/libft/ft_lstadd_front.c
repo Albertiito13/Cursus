@@ -1,25 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: albcamac <albcamac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 16:25:41 by albcamac          #+#    #+#             */
-/*   Updated: 2025/04/07 22:02:18 by albcamac         ###   ########.fr       */
+/*   Created: 2025/04/10 16:39:25 by albcamac          #+#    #+#             */
+/*   Updated: 2025/04/10 16:57:08 by albcamac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int c)
+#include "libft.h"
+
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
+	if (!lst || !new)
+		return ;
+	new->next = *lst;
+	*lst = new;
 }
 /*
 #include <stdio.h>
-int	main()
+#include "libft.h"
+
+int	main(void)
 {
-	printf("%d",ft_isdigit('8'));
+	t_list	*nodo1 = ft_lstnew("segundo");
+	t_list	*nodo0 = ft_lstnew("primero");
+
+	ft_lstadd_front(&nodo1, nodo0);
+
+	printf("Primer nodo: %s\n", (char *)nodo0->content);
+	printf("Siguiente nodo: %s\n", (char *)nodo0->next->content);
+
+	return (0);
 }
 */

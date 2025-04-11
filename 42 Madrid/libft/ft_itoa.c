@@ -6,13 +6,13 @@
 /*   By: albcamac <albcamac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:41:06 by albcamac          #+#    #+#             */
-/*   Updated: 2025/04/09 12:08:01 by albcamac         ###   ########.fr       */
+/*   Updated: 2025/04/11 12:22:17 by albcamac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_numlen(int n)
+static int	ft_numlen(int n)
 {
 	size_t	len;
 

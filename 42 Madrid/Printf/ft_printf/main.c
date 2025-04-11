@@ -55,5 +55,12 @@ int	main(void)
 
 	ft_printf("\n✅ Pruebas finalizadas con éxito!\n");
 
+
+	int	ft_ret = ft_printf(" %p %p ", (void *)0, (void *)0);
+	printf("\n(ft_printf returned: %d)\n", ft_ret);
+
+	int	std_ret = printf(" %p %p ", (void *)0, (void *)0);
+	printf("\n(printf returned: %d)\n", std_ret);
+
 	return (0);
 }

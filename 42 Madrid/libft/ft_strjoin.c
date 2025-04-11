@@ -6,7 +6,7 @@
 /*   By: albcamac <albcamac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 21:37:18 by albcamac          #+#    #+#             */
-/*   Updated: 2025/04/09 15:31:18 by albcamac         ###   ########.fr       */
+/*   Updated: 2025/04/11 13:46:01 by albcamac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	i;
 	size_t	j;
 
-	join = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) +1);
+	join = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!join)
 		return (0);
 	i = 0;

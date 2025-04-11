@@ -1,44 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: albcamac <albcamac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 22:46:49 by albcamac          #+#    #+#             */
-/*   Updated: 2025/04/09 13:45:00 by albcamac         ###   ########.fr       */
+/*   Created: 2025/04/10 17:17:42 by albcamac          #+#    #+#             */
+/*   Updated: 2025/04/10 17:27:27 by albcamac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	size_t			i;
-	unsigned char	*d;
-	unsigned char	*s;
-
-	d = (unsigned char *)dest;
-	s = (unsigned char *)src;
-	if (!dest && !src)
-		return (0);
-	i = 0;
-	while (i < n)
-	{
-		d[i] = s[i];
-		i++;
-	}
-	return (dest);
+	if (!lst || !del)
+		return ;
+	del (lst->content);
+	free(lst);
 }
 /*
 #include <stdio.h>
+#include <stdlib.h>
+#include "libft.h"
 
-int	main()
+void	ft_del(void *content)
 {
-	char origen[] = "hola pepe";
-	char destino[20];
+	free(content);
+}
 
-	ft_memcpy(destino, origen,ft_strlen(origen) + 1);
-	printf("%s",destino);
+int	main(void)
+{
+	char *str = ft_strdup("chau nodo");
+	t_list *nodo = ft_lstnew(str);
+
+	printf("Antes de borrar: %s\n", (char *)nodo->content);
+
+	ft_lstdelone(nodo, ft_del);
+
+	printf("Nodo borrado correctamente %s.\n", (char *)nodo->content);
+
+	return (0);
 }
 */

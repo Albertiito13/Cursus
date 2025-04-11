@@ -1,51 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: albcamac <albcamac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 23:15:01 by albcamac          #+#    #+#             */
-/*   Updated: 2025/04/09 13:46:56 by albcamac         ###   ########.fr       */
+/*   Created: 2025/04/10 16:30:53 by albcamac          #+#    #+#             */
+/*   Updated: 2025/04/10 16:35:23 by albcamac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+t_list	*ft_lstnew(void *content)
 {
-	size_t			i;
-	unsigned char	*d;
-	unsigned char	*s;
+	t_list	*node;
 
-	d = (unsigned char *)dest;
-	s = (unsigned char *)src;
-	if (!dest && !src)
+	node = (t_list *)malloc(sizeof(t_list));
+	if (!node)
 		return (0);
-	if (d > s && d < s + n)
-	{
-		i = n;
-		while (i--)
-			d[i] = s[i];
-	}
-	else
-	{
-		i = 0;
-		while (i < n)
-		{
-			d[i] = s[i];
-			i++;
-		}
-	}
-	return (dest);
+	node->content = content;
+	node->next = NULL;
+	return (node);
 }
 /*
 #include <stdio.h>
-int	main()
-{
-	char str[20] = "hola pedro";
+#include "libft.h"
 
-	ft_memmove(str + 6, str, 8);
-	printf("%s", str);
+int	main(void)
+{
+	char	*msg = "Hola, soy un nodo!";
+	t_list	*node = ft_lstnew((void *)msg);
+
+	if (node)
+	{
+		printf("Contenido del nodo: %s\n", (char *)node->content);
+		if (node->next == NULL)
+			printf("Siguiente nodo: NULL (correcto)\n");
+	}
+
+	free(node);
+	return (0);
 }
 */

@@ -1,47 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: albcamac <albcamac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/09 13:18:39 by albcamac          #+#    #+#             */
-/*   Updated: 2025/04/09 13:25:43 by albcamac         ###   ########.fr       */
+/*   Created: 2025/04/10 17:09:43 by albcamac          #+#    #+#             */
+/*   Updated: 2025/04/10 17:16:22 by albcamac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	if (!s)
+	t_list	*last;
+
+	if (!lst || !new)
 		return ;
-	while (*s)
+	if (*lst == NULL)
+		*lst = new;
+	else
 	{
-		write (fd, s, 1);
-		s++;
+		last = ft_lstlast(*lst);
+		last->next = new;
 	}
-	write (fd, "\n", 1);
 }
 /*
-#include <fcntl.h>
-#include <unistd.h>
+#include <stdio.h>
 #include "libft.h"
 
 int	main(void)
 {
-	int	fd;
+	t_list *n1 = ft_lstnew("Hola");
+	t_list *n2 = ft_lstnew("cómo");
+	t_list *n3 = ft_lstnew("estás?");
+	t_list *nuevo = ft_lstnew("yo estoy bien :)");
 
-	fd = open("log.txt", O_WRONLY | O_CREAT | O_APPEND, 0644);
-	if (fd == -1)
+	n1->next = n2;
+	n2->next = n3;
+
+	ft_lstadd_back(&n1, nuevo);
+
+	t_list *actual = n1;
+	while (actual)
 	{
-		ft_putendl_fd("Error al abrir el archivo", 2);
-		return (1);
+		printf("%s\n", (char *)actual->content);
+		actual = actual->next;
 	}
-
-	ft_putendl_fd("Primera línea del log", fd);
-	ft_putendl_fd("Otra línea más", fd);
-	close(fd);
 
 	return (0);
 }
