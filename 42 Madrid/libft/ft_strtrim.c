@@ -6,7 +6,7 @@
 /*   By: albcamac <albcamac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 22:00:26 by albcamac          #+#    #+#             */
-/*   Updated: 2025/04/08 22:26:31 by albcamac         ###   ########.fr       */
+/*   Updated: 2025/04/14 11:38:37 by albcamac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,15 @@ char	*ft_strtrim(char const *s1, char const *set)
 #include <stdlib.h>
 int main(void)
 {
-	char *s1 = "   Hola mundo   ";
-	char *set = " ";
+	char *s1 = "   hello world   ";
+	char *set = " ehwdl";
 	char *res1 = ft_strtrim(s1, set);
 
 	char *s2 = "\n\t42Madrid\t\n";
 	char *set2 = "\n\t";
 	char *res2 = ft_strtrim(s2, set2);
 
-	char *s3 = "xxx42xxx";
+	char *s3 = "xxx4x2xxx";
 	char *set3 = "x";
 	char *res3 = ft_strtrim(s3, set3);
 

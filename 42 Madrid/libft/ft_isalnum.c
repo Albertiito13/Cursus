@@ -6,7 +6,7 @@
 /*   By: albcamac <albcamac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:23:08 by albcamac          #+#    #+#             */
-/*   Updated: 2025/04/09 15:30:34 by albcamac         ###   ########.fr       */
+/*   Updated: 2025/04/14 14:57:52 by albcamac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_isalnum(int c)
 }
 /*
 #include <stdio.h>
-#include "libft.h" // Asegurate de que ft_isalnum esté declarado ahí
+#include "libft.h" 
 
 int main(void)
 {

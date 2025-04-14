@@ -6,7 +6,7 @@
 /*   By: albcamac <albcamac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 17:15:11 by albcamac          #+#    #+#             */
-/*   Updated: 2025/04/08 17:25:19 by albcamac         ###   ########.fr       */
+/*   Updated: 2025/04/14 17:42:45 by albcamac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*ft_calloc(size_t count, size_t size)
 	unsigned char	*ptr;
 	size_t			i;
 
+	if (size != 0 && count > 2147483647 / size)
+		return (NULL);
 	total = count * size;
 	ptr = (unsigned char *)malloc(total);
 	if (!ptr)
@@ -29,19 +31,34 @@ void	*ft_calloc(size_t count, size_t size)
 }
 /*
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "libft.h"
 
-void *ft_calloc(unsigned long count, unsigned long size);
-
-int main()
+int	main(void)
 {
-    int *nums = (int *)ft_calloc(10, sizeof(int));
-    if (!nums)
-        return 1;
+	// Este valor provoca un overflow silencioso si no se protege bien
+	// SIZE_MAX = 18446744073709551615 (en 64 bits)
+	// Aquí forzamos count * size > SIZE_MAX
+	size_t count = (size_t)-1 / 2 + 10;
+	size_t size = 100;
 
-    for (int i = 0; i < 10; i++)
-        printf("%d ", nums[i]); // → 0 0 0 0 0
+	void *ptr = ft_calloc(count, size);
 
-    free(nums);
-    return 0;
+	if (!ptr)
+	{
+		printf("✅ ft_calloc detectó correctamente el overflow\n");
+	}
+	else
+	{
+		printf("❌ ft_calloc NO detectó el overflow (malloc devolvió algo)\n");
+
+		memset(ptr, 1, count * size);
+
+		printf("❌ Acceso a memoria hecho tras overflow\n");
+		free(ptr);
+	}
+
+	return (0);
 }
-*/
+	*/
