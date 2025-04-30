@@ -6,7 +6,7 @@
 /*   By: albcamac <albcamac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 13:59:39 by albcamac          #+#    #+#             */
-/*   Updated: 2025/04/29 15:06:34 by albcamac         ###   ########.fr       */
+/*   Updated: 2025/04/29 22:54:15 by albcamac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,33 +81,4 @@ char	*ft_strdup(const char *s1)
 	}
 	cpy[i] = '\0';
 	return (cpy);
-}
-
-char	*ft_substr(const char *s, unsigned int start, size_t len)
-{
-	char	*sub;
-	size_t	s_len;
-	size_t	i;
-
-	if (!s)
-		return (0);
-	s_len = ft_strlen(s);
-	if (start >= s_len)
-	{
-		sub = (char *)malloc(1);
-		if (!sub)
-			return (0);
-		sub[0] = '\0';
-		return (sub);
-	}
-	if (len > s_len - start)
-		len = s_len - start;
-	sub = malloc(len + 1);
-	if (!sub)
-		return (0);
-	i = 0;
-	while (i < len)
-		sub[i++] = s[start++];
-	sub[i] = '\0';
-	return (sub);
 }

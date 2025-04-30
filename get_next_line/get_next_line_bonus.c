@@ -6,13 +6,13 @@
 /*   By: albcamac <albcamac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 13:56:53 by albcamac          #+#    #+#             */
-/*   Updated: 2025/04/29 15:41:25 by albcamac         ###   ########.fr       */
+/*   Updated: 2025/04/29 22:50:38 by albcamac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-char	*extract_line(char *stash)
+static char	*extract_line(char *stash)
 {
 	int		i;
 	char	*line;
@@ -39,7 +39,7 @@ char	*extract_line(char *stash)
 	return (line);
 }
 
-char	*clean_stash(char *stash)
+static char	*clean_stash(char *stash)
 {
 	int		i;
 	int		j;
@@ -66,7 +66,7 @@ char	*clean_stash(char *stash)
 	return (new_stash);
 }
 
-char	*read_and_stash(int fd, char *stash)
+static char	*read_and_stash(int fd, char *stash)
 {
 	char	*buf;
 	char	*tmp;

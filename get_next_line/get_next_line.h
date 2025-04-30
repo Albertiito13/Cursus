@@ -6,7 +6,7 @@
 /*   By: albcamac <albcamac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 14:16:30 by albcamac          #+#    #+#             */
-/*   Updated: 2025/04/25 18:19:23 by albcamac         ###   ########.fr       */
+/*   Updated: 2025/04/29 22:53:09 by albcamac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,4 @@ char		*ft_strjoin(const char *s1, const char *s2);
 char		*ft_strchr(const char *s, int c);
 size_t		ft_strlen(const char *s);
 char		*ft_strdup(const char *s);
-char		*ft_substr(const char *s, unsigned int start, size_t len);
-char		*extract_line(char *stash);
-char		*clean_stash(char *stash);
 #endif

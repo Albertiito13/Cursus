@@ -6,13 +6,13 @@
 /*   By: albcamac <albcamac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 13:56:53 by albcamac          #+#    #+#             */
-/*   Updated: 2025/04/29 14:04:29 by albcamac         ###   ########.fr       */
+/*   Updated: 2025/04/30 11:48:22 by albcamac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*extract_line(char *stash)
+static char	*extract_line(char *stash)
 {
 	int		i;
 	char	*line;
@@ -39,7 +39,7 @@ char	*extract_line(char *stash)
 	return (line);
 }
 
-char	*clean_stash(char *stash)
+static char	*clean_stash(char *stash)
 {
 	int		i;
 	int		j;
@@ -50,14 +50,14 @@ char	*clean_stash(char *stash)
 	i = 0;
 	while (stash[i] && (stash[i] != '\n'))
 		i++;
-	if (!stash[i])
+	while (!stash[i])
 		return (free(stash), NULL);
 	i++;
 	if (!stash[i])
 		return (free(stash), NULL);
 	new_stash = (char *)malloc(sizeof(char) * (ft_strlen(stash + i) + 1));
 	if (!new_stash)
-		return (NULL);
+		return (free(stash), NULL);
 	j = 0;
 	while (stash[i])
 		new_stash[j++] = stash[i++];
@@ -66,7 +66,7 @@ char	*clean_stash(char *stash)
 	return (new_stash);
 }
 
-char	*read_and_stash(int fd, char *stash)
+static char	*read_and_stash(int fd, char *stash)
 {
 	char	*buf;
 	char	*tmp;
@@ -88,10 +88,7 @@ char	*read_and_stash(int fd, char *stash)
 	}
 	free(buf);
 	if (bytes == -1)
-	{
-		free(stash);
-		return (NULL);
-	}
+		return (free(stash), NULL);
 	return (stash);
 }
 
