@@ -6,7 +6,7 @@
 /*   By: albcamac <albcamac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 19:52:24 by albcamac          #+#    #+#             */
-/*   Updated: 2025/05/01 00:06:04 by albcamac         ###   ########.fr       */
+/*   Updated: 2025/05/23 00:45:43 by albcamac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,9 @@ int	ft_format_dispatcher(char specifier, va_list args)
 		ft_putchar_fd('%', 1);
 		return (1);
 	}
-	return (0);
+	else
+	{
+		ft_putchar_fd('%', 1);
+		return (1);
+	}
 }
